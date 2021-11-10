@@ -6,13 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Entity(name = "participante")
 public class Participante {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     private String nombreCompleto;
 
@@ -26,6 +33,10 @@ public class Participante {
     private String rol;
 
     private boolean participaciónValida;
+
+    //@ManyToOne
+    //@JoinColumn(name="reunion_id", nullable=false)
+    //private Reunion reunion;
 
 
 }

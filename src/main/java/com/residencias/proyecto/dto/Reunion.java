@@ -6,14 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Reunion {
+@Entity(name = "reunion")
+public class Reunion implements Serializable {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     private int numeroParticipantes;
 
@@ -25,8 +34,10 @@ public class Reunion {
 
     private String idDepuracion;
 
-
+    @OneToMany(targetEntity = Participante.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "reunion_id", referencedColumnName = "id")
     private List<Participante> participantes;
+
 
 
 
