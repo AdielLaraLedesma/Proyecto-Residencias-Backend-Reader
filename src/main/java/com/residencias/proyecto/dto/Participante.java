@@ -6,7 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
@@ -22,8 +25,6 @@ public class Participante {
     private Integer id;
 
     private String nombreCompleto;
-
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm:ss", timezone = "GMT+8")
     private Date horaUnion;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm:ss", timezone = "GMT+8")
@@ -33,10 +34,7 @@ public class Participante {
     private String rol;
 
     private boolean participaciónValida;
-
-    //@ManyToOne
-    //@JoinColumn(name="reunion_id", nullable=false)
-    //private Reunion reunion;
+    private boolean asistencia;
 
 
 }
